@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5440/cricket_db
+    username: cricket_user
+    password: cricket_pass
+    driver-class-name: org.postgresql.Driver
+
+  flyway:
+    enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+
+
+app:
+  ipl:
+    data-path: "C:/Users/deepa/Desktop/ipl_json"
+    import-enabled: true

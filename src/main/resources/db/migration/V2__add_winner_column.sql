@@ -1,0 +1,2 @@
+
+ALTER TABLE match ADD COLUMN IF NOT EXISTS winner varchar(100);
