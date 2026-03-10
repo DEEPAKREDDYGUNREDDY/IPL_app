@@ -2,7 +2,6 @@ package com.example.RCB_FanPage.service;
 
 
 import com.example.RCB_FanPage.DTO.RCBSeasonwise;
-import com.example.RCB_FanPage.DTO.Season;
 import com.example.RCB_FanPage.Entities.MatchEntity;
 import com.example.RCB_FanPage.Repositories.MatchRepository;
 import lombok.AllArgsConstructor;
@@ -12,15 +11,15 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class RCBSeasonWise {
+public class SeasonWisestats {
 
     private final MatchRepository matchRepository;
 
-    public RCBSeasonwise RCBstatsseasonwise(int year,Long team_id) {
+    public RCBSeasonwise seasonwisestats(int year,Long team_id) {
 
 
 
-        List<MatchEntity> matchentities=matchRepository.RCBstatsseasonwise(year,team_id);
+        List<MatchEntity> matchentities=matchRepository.seasonwisestats(year,team_id);
 
 
         System.out.println(matchentities.size());

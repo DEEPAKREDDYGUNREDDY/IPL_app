@@ -47,4 +47,5 @@ public class Match {
     private TeamEntity tossWinner;
 
     private String tossDecision;
+
 }

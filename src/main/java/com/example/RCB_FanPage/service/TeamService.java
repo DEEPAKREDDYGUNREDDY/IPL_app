@@ -1,7 +1,6 @@
 package com.example.RCB_FanPage.service;
 
 
-import com.example.RCB_FanPage.DTO.Match;
 import com.example.RCB_FanPage.DTO.Season;
 import com.example.RCB_FanPage.DTO.Team;
 import com.example.RCB_FanPage.Entities.SeasonEntity;
@@ -14,13 +13,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static org.hibernate.internal.util.collections.ArrayHelper.forEach;
 
 @Service
 @AllArgsConstructor
-public class RCBService {
+public class TeamService {
 
 //    public RCBService(SeasonRepository seasonRepository, TeamRepository teamRepository, MatchRepository matchRepository) {
 //        this.seasonRepository = seasonRepository;
@@ -66,6 +62,8 @@ public class RCBService {
         }
         return seasons;
     }
+
+
 
 
 

@@ -14,6 +14,14 @@ import java.util.Optional;
 public interface MatchRepository extends JpaRepository<MatchEntity, Long> {
 
 
+    @Query("""
+SELECT match FROM MatchEntity match
+WHERE (match.team1.id= :team_id) OR (match.team2.id= :team_id)
+
+""")
+    List<MatchEntity> teamstats(@Param("team_id") Long team_id);
+
+
 
 
 
@@ -24,7 +32,7 @@ AND (match.team1.id= :team_id OR match.team2.id= :team_id)
 
 """)
 
-    List<MatchEntity> RCBstatsseasonwise(@Param("year") int year, @Param("team_id") Long team_id);
+    List<MatchEntity> seasonwisestats(@Param("year") int year, @Param("team_id") Long team_id);
 
 
     @Query("""
