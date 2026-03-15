@@ -14,7 +14,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/rcb/**")
-                        .allowedOrigins("http://localhost:5173", "https://ipl-app-theta.vercel.app")
+                        .allowedOriginPatterns("http://localhost:5173", "https://*.vercel.app")
                         .allowedMethods("GET");
             }
         };
