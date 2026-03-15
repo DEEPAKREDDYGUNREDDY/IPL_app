@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rcb-red: #E41E26;
+  --color-rcb-gold: #D4AF37;
+  --color-rcb-dark: #1A1A2E;
+  --color-rcb-darker: #0F0F1A;
+  --color-rcb-light: #F5F5F5;
+  --color-rcb-card: #16213E;
+  --color-ipl-blue: #2563EB;
+  --color-ipl-orange: #F97316;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-rcb-darker);
+  color: white;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}

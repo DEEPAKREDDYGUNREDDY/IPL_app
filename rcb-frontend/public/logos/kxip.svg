@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F25A60"/>
+      <stop offset="100%" stop-color="#ED1B24"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#bg)" filter="url(#shadow)" stroke="rgba(255,255,255,0.15)" stroke-width="2"/>
+  <text x="100" y="108" text-anchor="middle" fill="white" font-family="system-ui, sans-serif" font-weight="800" font-size="42">KXIP</text>
+</svg>

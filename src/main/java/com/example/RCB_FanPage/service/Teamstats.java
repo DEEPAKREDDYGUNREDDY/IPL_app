@@ -55,12 +55,7 @@ public class Teamstats {
        response.setLosses(losses);
        return response;
 
-
-
-
-
-
-   }
+    }
 
 
 }
