@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5440/cricket_db
-    username: cricket_user
-    password: cricket_pass
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5440/cricket_db}
+    username: ${DATABASE_USERNAME:cricket_user}
+    password: ${DATABASE_PASSWORD:cricket_pass}
     driver-class-name: org.postgresql.Driver
 
   flyway:
@@ -13,8 +13,7 @@ spring:
       ddl-auto: validate
 
 
-
 app:
   ipl:
-    data-path: "C:/Users/deepa/Desktop/ipl_json"
-    import-enabled: true
+    data-path: ${IPL_DATA_PATH:C:/Users/deepa/Desktop/ipl_json}
+    import-enabled: ${IPL_IMPORT_ENABLED:true}

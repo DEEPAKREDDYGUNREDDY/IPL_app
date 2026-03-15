@@ -1,4 +1,5 @@
-const BASE = '/rcb';
+const API_URL = import.meta.env.VITE_API_URL || '';
+const BASE = `${API_URL}/rcb`;
 
 export async function getTeams() {
   const res = await fetch(`${BASE}/teams`);
