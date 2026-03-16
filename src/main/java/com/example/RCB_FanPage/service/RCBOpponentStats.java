@@ -24,6 +24,7 @@ public class RCBOpponentStats {
         int TotalmatchesPlayed=0;
         int RCBWins=0;
         int OpponentWins=0;
+        int draws=0;
 
         for(MatchEntity match:matches){
             TotalmatchesPlayed++;
@@ -33,10 +34,14 @@ public class RCBOpponentStats {
             else if(match.getWinner().getId()==rcb_id){
                 RCBWins++;
             }
+            else{
+                draws++;
+            }
+
 
         }
 
-        int draws=TotalmatchesPlayed-RCBWins-OpponentWins;
+
         response.setRCBWins(RCBWins);
         response.setOpponentWins(OpponentWins);
         response.setTotalmatchesPlayed(TotalmatchesPlayed);
