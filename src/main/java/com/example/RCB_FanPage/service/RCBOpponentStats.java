@@ -28,10 +28,13 @@ public class RCBOpponentStats {
 
         for(MatchEntity match:matches){
             TotalmatchesPlayed++;
-            if(match.getWinner().getId()==team_id){
+            if(match.getWinner() == null){
+                draws++;
+            }
+            else if(match.getWinner().getId().equals(team_id)){
                 OpponentWins++;
             }
-            else if(match.getWinner().getId()==rcb_id){
+            else if(match.getWinner().getId().equals(rcb_id)){
                 RCBWins++;
             }
             else{

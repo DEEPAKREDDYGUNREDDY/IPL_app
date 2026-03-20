@@ -30,10 +30,7 @@ public class SeasonWisestats {
 
         for(MatchEntity match:matchentities){
             totalmatchesplayed++;
-            System.out.println(match.getWinner());
-            System.out.println(match.getWinner().getName());
-            System.out.println(match.getWinner().getId());
-            if(match.getWinner().getId()==team_id){
+            if(match.getWinner() != null && match.getWinner().getId().equals(team_id)){
                 wins++;
             }
 
