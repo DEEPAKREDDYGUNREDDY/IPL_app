@@ -62,8 +62,8 @@ public class RCBController {
     }
 
     @GetMapping("/team1_team2/season/stats")
-    public List<RCBOppSeasonwise> getRCBOppSeasonwise(@RequestParam Long team1_id,@RequestParam Long team2_id,@RequestParam int season){
-        List<RCBOppSeasonwise> realstats=rcbOppBySeason.RCBOppBySeasonstats(team1_id,team2_id,season);
+    public List<RCBOppSeasonwise> getRCBOppSeasonwise(@RequestParam Long team1_id, @RequestParam Long team2_id, @RequestParam int season) {
+        List<RCBOppSeasonwise> realstats = rcbOppBySeason.RCBOppBySeasonstats(team1_id, team2_id, season);
 
 
         return realstats;
