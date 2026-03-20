@@ -376,9 +376,9 @@ function Stats() {
 
     if (activeTab === 'h2h') {
       const matches = result.totalmatchesPlayed ?? result.TotalmatchesPlayed ?? 0
-      const t1Wins = result.rcbWins ?? result.RCBWins ?? 0
-      const t2Wins = result.opponentWins ?? result.OpponentWins ?? 0
-      const draws = result.totalDraws ?? result.TotalDraws ?? 0
+      const t1Wins = result.rcbwins ?? result.rcbWins ?? 0
+      const t2Wins = result.opponentWins ?? result.opponentwins ?? 0
+      const draws = result.totalDraws ?? result.totaldraws ?? 0
       const t1Color = getTeamColor(teamId)
       const t2Color = getTeamColor(team2Id)
       return (
