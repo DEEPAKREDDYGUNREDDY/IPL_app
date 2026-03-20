@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.File;
 import java.nio.file.Files;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -70,7 +71,21 @@ public class IplImportService {
                 Integer seasonYear = null;
                 JsonNode seasonNode = info.get("season");
                 if (seasonNode != null && !seasonNode.isNull()) {
-                    seasonYear = seasonNode.isInt() ? seasonNode.asInt() : safeParseInt(seasonNode.asText());
+                    if (seasonNode.isInt()) {
+                        seasonYear = seasonNode.asInt();
+                    } else {
+                        String seasonText = seasonNode.asText().trim();
+                        if (seasonText.contains("/")) {
+                            // Handle split-year format like "2007/08" -> use dates to get actual year
+                            JsonNode datesNode = info.get("dates");
+                            if (datesNode != null && datesNode.isArray() && datesNode.size() > 0) {
+                                String firstDate = datesNode.get(0).asText();
+                                seasonYear = safeParseInt(firstDate.substring(0, 4));
+                            }
+                        } else {
+                            seasonYear = safeParseInt(seasonText);
+                        }
+                    }
                 }
                 if (seasonYear == null) {
                     skippedNoSeason++;
@@ -162,10 +177,33 @@ public class IplImportService {
         System.out.println("Failed=" + failed);
     }
 
+    private static final Map<String, String> TEAM_NAME_MAP = Map.ofEntries(
+        Map.entry("Mumbai Indians", "MI"),
+        Map.entry("Chennai Super Kings", "CSK"),
+        Map.entry("Royal Challengers Bangalore", "RCB"),
+        Map.entry("Royal Challengers Bengaluru", "RCB"),
+        Map.entry("Kolkata Knight Riders", "KKR"),
+        Map.entry("Sunrisers Hyderabad", "SRH"),
+        Map.entry("Delhi Capitals", "DC"),
+        Map.entry("Delhi Daredevils", "DC"),
+        Map.entry("Rajasthan Royals", "RR"),
+        Map.entry("Kings XI Punjab", "PBKS"),
+        Map.entry("Punjab Kings", "PBKS"),
+        Map.entry("Lucknow Super Giants", "LSG"),
+        Map.entry("Gujarat Titans", "GT"),
+        Map.entry("Gujarat Lions", "GL"),
+        Map.entry("Deccan Chargers", "DCG"),
+        Map.entry("Kochi Tuskers Kerala", "KTK"),
+        Map.entry("Pune Warriors India", "PW"),
+        Map.entry("Rising Pune Supergiant", "RPS"),
+        Map.entry("Rising Pune Supergiants", "RPS")
+    );
+
     private TeamEntity getOrCreateTeam(String name) {
-        Optional<TeamEntity> existing = teamRepository.findByName(name);
+        String mappedName = TEAM_NAME_MAP.getOrDefault(name, name);
+        Optional<TeamEntity> existing = teamRepository.findByName(mappedName);
         if (existing.isPresent()) return existing.get();
-        return teamRepository.save(TeamEntity.builder().name(name).build());
+        return teamRepository.save(TeamEntity.builder().name(mappedName).build());
     }
 
     private SeasonEntity getOrCreateSeason(Integer year) {
