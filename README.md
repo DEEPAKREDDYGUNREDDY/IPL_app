@@ -1,6 +1,6 @@
  IPL Analytics Hub
 
-A full-stack cricket intelligence platform that transforms 17 years of IPL match data into interactive, real-time insights. Explore team stats, head-to-head records, season analysis, and more — all wrapped in a sleek, team-colored UI.
+A full-stack cricket intelligence platform that transforms 18years of IPL match data into interactive, real-time insights. Explore team stats, head-to-head records, season analysis, and more — all wrapped in a sleek, team-colored UI.
 
  **Live Demo:** [ipl-statshub.vercel.app](https://ipl-statshub.vercel.app)
 
